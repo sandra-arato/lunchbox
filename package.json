@@ -1,0 +1,30 @@
+{
+  "name": "lunchbox",
+  "version": "1.0.0",
+  "description": "lunch suggestion with ML",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sandra-arato/lunchbox.git"
+  },
+  "keywords": [
+    "classification",
+    "machine",
+    "learning",
+    "javascript"
+  ],
+  "author": "Sandra Arato",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sandra-arato/lunchbox/issues"
+  },
+  "homepage": "https://github.com/sandra-arato/lunchbox#readme",
+  "dependencies": {
+    "csvtojson": "^2.0.8",
+    "ml-dataset-iris": "^1.0.0",
+    "ml-random-forest": "^1.0.3"
+  }
+}
