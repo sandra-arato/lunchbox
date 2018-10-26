@@ -1,0 +1,156 @@
+*, body {
+  font-family: Poppins;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0 2rem;
+  text-align: center;
+}
+
+h1 {
+  color: #4d58f5;
+  font-size: 2.5rem;
+  letter-spacing: 0.43;
+  margin-bottom: 0.25em;
+}
+
+h2 {
+  font-weight: 400;
+  margin-top: 0.5rem;
+  font-family: Caveat;
+}
+
+.budget-container {
+  display: inline-block;
+  height: 4rem;
+  font-size: 1.5rem;
+  vertical-align: top;
+}
+
+.budget-container::before {
+  display: inline-block;
+  content: '💸';
+}
+
+.budget {
+  padding: 0.25rem 0.5rem;
+  margin: 0.5rem;
+  font-size: 1.5rem;
+  font-family: Poppins;
+  font-weight: 300;
+}
+
+.settings {
+  position: relative;
+  display: inline-block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 2rem;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.settings:hover {
+  background: #4d58f5;
+}
+
+.settings span:first-child {
+  position: absolute;
+  top: 0.25rem;
+  left: 0.685rem;
+  display: block;
+  font-size: 2.5rem;
+}
+
+.settings span:last-child {
+  display: inline-block;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.settings input {
+  margin-top: 1rem;
+}
+.options label {
+  display: block;
+}
+
+.options span {
+  display: inline-block;
+  text-align: left;
+  min-width: 8.5rem;
+}
+/*
+'Burger', 'Burrito', 'Cafe', 'Indian', 'Japanese', 'Korean', 'Pizza', 'Salad', 'Thai', 'Vietnamese', 'Wrap'
+ */
+
+ul {
+  list-style: none;
+  padding-top: 1.5rem;
+  min-height: 12rem;
+}
+
+li {
+  display: inline-block;
+  font-size: 4.5rem;
+  margin: 0.5rem 0.25rem;
+  min-width: 6rem;
+}
+
+.Burger::before {
+  display: inline-block;
+  content: '🍔';
+}
+
+.Burrito::before {
+  display: inline-block;
+  content: '🌯';
+}
+
+.Cafe::before {
+  display: inline-block;
+  content: '☕';
+}
+
+.Indian::before {
+  display: inline-block;
+  content: '🍛';
+}
+
+.Japanese::before {
+  display: inline-block;
+  content: '🍣';
+}
+
+.Korean::before {
+  display: inline-block;
+  content: '🥟';
+}
+
+.Thai::before {
+  display: inline-block;
+  content: '🍜';
+}
+
+.Pizza::before {
+  display: inline-block;
+  content: '🍕';
+}
+
+.Salad::before {
+  display: inline-block;
+  content: '🥗';
+}
+
+.Vietnamese::before {
+  display: inline-block;
+  content: '🍲';
+}
+
+.Wrap::before {
+  display: inline-block;
+  content: '🥙';
+}
