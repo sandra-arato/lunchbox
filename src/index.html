@@ -18,10 +18,16 @@
       <label for="budget" class="budget-container">
         <input class="budget" type="number" id="budget" name="budget" min="35" max="100" value="80">
       </label>
-      <label class="settings">
-        <span>👩‍🍳<span>show settings</span></span>
-        <input type="checkbox" id="settings">
-      </label>
+      <div class="settings">
+        <span>👩‍🍳</span>
+        <span>show settings</span>
+      </div>
+      <div class="params">
+        <span id="seed-value" class="seed">11</span>
+        <span id="maxFeatures-value" class="feature">0.8</span>
+        <span id="nEstimators-value" class="estimator">16</span>
+      </div>
+      <button id="predict" class="button"><span></span>🎰</button>
       <div class="options">
         <h3>Options</h3>
         <!--
@@ -33,17 +39,17 @@
         <label for="seed">
           <span>Seed</span>
           <input type="range" id="seed" name="seed"
-             min="20" max="120" />
+             min="20" max="120" value="11"  />
         </label>
         <label for="maxFeatures">
           <span>Max features</span>
           <input type="range" id="maxFeatures" name="maxFeatures" step="0.05"
-                min="0.1" max="1" />
+                min="0.1" max="1" value="0.8" />
         </label>
         <label for="nEstimators">
           <span>Estimators</span>
           <input type="range" id="nEstimators" name="nEstimators"
-                min="3" max="50" />
+                min="3" max="50" value="16"  />
         </label>
 
       </div>

@@ -30,24 +30,21 @@ const calculateFeatures = (budget) => {
   for (let i = 0; i < 5; i++) {
     const date = new Date();
     date.setDate(date.getDate() + i + 1);
-    features.push([prices[i], date.getDay(), date.getDate(), date.getMonth() + 1, 1]);
+    features.push([prices[i], date.getDay(), date.getDate(), date.getMonth() + 1, 0]);
   }
-  console.log(features);
   return features;
 }
 
 app.get('/mealplan', function (request, response) {
-
   if (request.query) {
-    console.log(request.query);
-    const features = calculateFeatures(request.query.budget);
-    console.log(features);
+    const { budget, seed, maxFeatures, nEstimators} = request.query;
+    const features = calculateFeatures(budget);
     const params = {
       options: {
-          seed: 11,
-          maxFeatures: 0.8,
+          seed: parseInt(seed),
+          maxFeatures: parseFloat(maxFeatures),
           replacement: true,
-          nEstimators: 16
+          nEstimators: parseInt(nEstimators),
       },
       features: features,
     };

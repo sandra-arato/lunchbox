@@ -1,4 +1,4 @@
-const csvFilePath='./data/choices.csv';
+const csvFilePath='./data/choices2.csv';
 const csv = require('csvtojson');
 const ML =  require('ml-random-forest');
 const { performance } = require('perf_hooks');
@@ -32,6 +32,7 @@ const model = params => {
 
         // Options coming from the front end
         const { options, features } = params;
+        console.log(`Model building with params: ${JSON.stringify(options)}`);
         const classifier = new ML.RandomForestClassifier(options);
 
         classifier.train(training, prediction.map((elem) =>
@@ -39,7 +40,6 @@ const model = params => {
         ));
         const timeElapsed = Math.ceil((performance.now() - perf));
         console.log(`Model trained in ${timeElapsed}ms.`);
-
         const result = classifier.predict(features);
         for (let i = 0; i < result.length; i++) {
           mealplan.push(choices[result[i]]);
