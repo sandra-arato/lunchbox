@@ -25,6 +25,7 @@
   "dependencies": {
     "csvtojson": "^2.0.8",
     "express": "^4.16.4",
+    "ml-confusion-matrix": "^0.3.0",
     "ml-dataset-iris": "^1.0.0",
     "ml-random-forest": "^1.0.3"
   }

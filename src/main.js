@@ -45,6 +45,16 @@ function getPredictions() {
           li.classList.add(meals[i]);
           list.appendChild(li);
         }
+        console.log(res);
+        const positives = document.getElementById('truePos');
+        positives.innerHTML = '';
+        let newContent = 'True positives - ';
+        Object.keys(res.truePos).map(item => {
+          if (res.truePos[item] > 0) {
+            newContent = newContent + `${item}: ${res.truePos[item]} `;
+          }
+        });
+        positives.innerHTML = newContent;
       }
 
     }

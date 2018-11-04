@@ -36,6 +36,7 @@ csv()
         nEstimators: 25
       };
 
+      // Pick a classifier, and see how you go.
       const classifier = new ML.RandomForestClassifier(options);
 
       classifier.train(training, prediction.map((elem) =>
@@ -46,10 +47,10 @@ csv()
 
       // Calculate result for tomorrow
       const price = 21;
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate()+1);
+      const today = new Date();
+      today.setDate(today.getDate()+1);
 
-      const result = classifier.predict([[price, tomorrow.getDay(), tomorrow.getDate(), tomorrow.getMonth() + 1, 1]]);
+      const result = classifier.predict([[price, today.getDay(), today.getDate(), today.getMonth() + 1, 1]]);
       // const result = classifier.predict([[6, 2, 21,11, 1]]);
       console.log(`Tomorrow's menu is: ${choices[result[0]]}`);
       return result;

@@ -1,6 +1,7 @@
 const csvFilePath='./data/choices2.csv';
 const csv = require('csvtojson');
 const ML =  require('ml-random-forest');
+const CM = require('ml-confusion-matrix');
 const { performance } = require('perf_hooks');
 
 // Classes that will define the expected output
@@ -14,7 +15,7 @@ const model = params => {
     .fromFile(csvFilePath)
     .then((data)=>{
         const training = [];
-        const prediction = [];
+        const trueLabel = [];
         for (let i in data) {
           const { Price, WeekOfDay, Day, Month, Sandra } = data[i];
           // Arranging training set
@@ -25,7 +26,7 @@ const model = params => {
             parseInt(Month),
             parseInt(Sandra)
           ]);
-          prediction.push(data[i].Food);
+          trueLabel.push(data[i].Food);
         }
         const perf = performance.now();
         console.log('Data ready, running the model now..');
@@ -35,7 +36,7 @@ const model = params => {
         console.log(`Model building with params: ${JSON.stringify(options)}`);
         const classifier = new ML.RandomForestClassifier(options);
 
-        classifier.train(training, prediction.map((elem) =>
+        classifier.train(training, trueLabel.map((elem) =>
           choices.indexOf(elem)
         ));
         const timeElapsed = Math.ceil((performance.now() - perf));
@@ -44,7 +45,23 @@ const model = params => {
         for (let i = 0; i < result.length; i++) {
           mealplan.push(choices[result[i]]);
         }
-        resolve({ prediction: mealplan, time: timeElapsed });
+
+
+        // measuring confusion matrix for the Model
+        // eg. accuracy and true positives
+        const predictedLabel = [];
+        for (let j = 0; j < trueLabel.length; j++) {
+          const p = classifier.predict([training[j]])[0];
+          predictedLabel.push(choices[p]);
+        }
+
+        const confusionMatrix = CM.fromLabels(trueLabel, predictedLabel);
+        const truePos = choices.map(food => confusionMatrix.getTruePositiveCount(food));
+        const truePosLabels = {};
+        choices.forEach((key, i) => truePosLabels[key] = truePos[i]);
+        console.log(truePosLabels);
+
+        resolve({ prediction: mealplan, time: timeElapsed, truePos: truePosLabels });
     });
   });
 }
